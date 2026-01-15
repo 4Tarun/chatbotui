@@ -20,13 +20,14 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh '''
-                    cd Chatbot-UI
-                    /opt/sonar-scanner/bin/sonar-scanner \
-                    -Dsonar.projectKey=chatbot-ui \
-                    -Dsonar.sources=.
-                    '''
-
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                        sh '''
+                        cd Chatbot-UI
+                        /opt/sonar-scanner/bin/sonar-scanner \
+                        -Dsonar.projectKey=chatbot-ui \
+                        -Dsonar.sources=.
+                        '''
+                        }
                 }
             }
         }
