@@ -25,7 +25,9 @@ pipeline{
                         cd Chatbot-UI
                         /opt/sonar-scanner/bin/sonar-scanner \
                         -Dsonar.projectKey=chatbot-ui \
-                        -Dsonar.sources=.
+                        -Dsonar.sources=. \
+                        -Dsonar.login=$SONAR_TOKEN \
+                        -Dsonar.javascript.node.maxspace=4096
                         '''
                         }
                 }
