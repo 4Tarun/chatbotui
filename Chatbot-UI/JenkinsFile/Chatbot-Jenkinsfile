@@ -22,9 +22,11 @@ pipeline{
                 withSonarQubeEnv('sonar-server') {
                     sh '''
                     cd Chatbot-UI
-                    $SCANNER_HOME/bin/sonar-scanner ...
+                    sonar-scanner \
+                    -Dsonar.projectKey=chatbot-ui \
+                    -Dsonar.sources=.
                     '''
-
+                    
                 }
             }
         }
