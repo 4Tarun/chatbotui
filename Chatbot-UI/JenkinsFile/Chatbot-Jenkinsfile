@@ -23,10 +23,11 @@ pipeline{
                     sh '''
                     cd Chatbot-UI
                     sonar-scanner \
+                    /opt/sonar-scanner/bin/sonar-scanner \
                     -Dsonar.projectKey=chatbot-ui \
                     -Dsonar.sources=.
                     '''
-                    
+
                 }
             }
         }
